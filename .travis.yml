@@ -13,25 +13,6 @@ matrix:
 
 # https://docs.conan.io/en/1.12/installation.html
 # https://github.com/conan-io/conan
-    - name: "Install Conan from source wo snaps on bionic amd64"
-      dist: bionic
-      arch: amd64
-      language: python
-      python: 3.7
-      before_install:
-        - pip3 install virtualenv
-        - virtualenv -p $(which python3) ~venvpy3
-        - source ~venvpy3/bin/activate
-        - pip install -r requirements.txt
-      script:
-        - git clone https://github.com/conan-io/conan.git
-        - cd conan && pip install -r conans/requirements.txt
-        - conan #Check if Conan is installed correctly.
-      after_success:
-        - deactivate
-
-# https://docs.conan.io/en/1.12/installation.html
-# https://github.com/conan-io/conan
     - name: "Install Conan with pip wo snaps on bionic amd64"
       dist: bionic
       arch: amd64
@@ -45,25 +26,6 @@ matrix:
       script:
         - pip install conan
         - conan #Check if Conan is installed correctly.
-      after_success:
-        - deactivate
-
-# https://docs.conan.io/en/1.12/installation.html
-# https://github.com/conan-io/conan
-    - name: "deploy MD5encrypter app with conan wo snaps on bionic amd64"
-      dist: bionic
-      arch: amd64
-      language: python
-      python: 3.7
-      before_install:
-        - pip3 install virtualenv
-        - virtualenv -p $(which python3) ~venvpy3
-        - source ~venvpy3/bin/activate
-        - pip install -r requirements.txt
-      script:
-        - pip install conan
-        - conan #Check if Conan is installed correctly.
-        - sudo make deploy-MD5encrypter-app
       after_success:
         - deactivate
 
